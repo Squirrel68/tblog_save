@@ -4,6 +4,7 @@ import {useMemo, useState} from 'react'
 import BlogPreview from '../components/BlogPreview'
 import {getBlogs} from '../server/blogs'
 import {BlogPost} from '../types/blog'
+import Link from 'next/link'
 
 const Home: NextPage = ({
   blogData,
@@ -63,15 +64,17 @@ const Home: NextPage = ({
               key={blog.id}
               className="max-w-[28em] max-h-[20em] overflow-hidden mx-6 mb-6 bg-neutral-300 text-zinc-800 rounded-lg p-4 hover:bg-neutral-500 hover:text-neutral-300 transition-all duration-300"
             >
-              <a href={blog.url} target="_blank" rel="noreferrer">
-                <BlogPreview
-                  title={blog.title}
-                  bodyText={blog.bodyText}
-                  createdAt={blog.createdAt}
-                  author={blog.author}
-                  tags={blog.tags}
-                />
-              </a>
+              {blog.url && (
+                <Link href={blog.url}>
+                  <BlogPreview
+                    title={blog.title}
+                    bodyText={blog.bodyText}
+                    createdAt={blog.createdAt}
+                    author={blog.author}
+                    tags={blog.tags}
+                  />
+                </Link>
+              )}
             </div>
           )
         })}

@@ -1,6 +1,6 @@
 export function discussionGql(ghDiscussionCategoryId: string | undefined) {
   return `{
-        repository(owner: "anhduy1202", name: "DevBlog-yt") {
+        repository(owner: "Squirrel68", name: "tblog_save") {
             discussions(first: 100, categoryId: "${ghDiscussionCategoryId}") {
               nodes {
                 title
@@ -29,7 +29,7 @@ export function discussionGql(ghDiscussionCategoryId: string | undefined) {
 // Single post
 export function discussionDetailGql(postId: number | undefined) {
   return `{
-    repository(owner: "anhduy1202", name: "DevBlog-yt") {
+    repository(owner: "Squirrel68", name: "tblog_save") {
       discussion(number: ${postId}) {
         title
         bodyHTML
